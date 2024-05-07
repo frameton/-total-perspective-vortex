@@ -17,9 +17,11 @@ def choose_file():
 	f = []
 	for (dirpath, dirnames, filenames) in walk("datasets/"):
 		for elt in filenames:
-			if elt.lower().endswith('.csv'):
+			if elt.lower().endswith('.edf') or elt.lower().endswith('.edf.event'):
 				f.append(elt)
 		break
+	if len(f) == 0:
+		return None
 
 	questions = [
 	inquirer.List(
